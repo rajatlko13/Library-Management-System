@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+	
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.sql.*"%>
+<%@page import="javax.servlet.http.*"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.ServletException"%>
+<%@page import="java.io.IOException"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -360,6 +371,47 @@
     </div>
   </div>
 </div>
+
+<%
+	  try
+	  {
+  		String url="jdbc:mysql://localhost:3306/library?useSSL=false";
+		String uname="root";
+		String pass="Rajat123";
+		String query="select * from bookissue";
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con=DriverManager.getConnection(url,uname,pass);
+		PreparedStatement st=con.prepareStatement(query);
+		ResultSet rs=st.executeQuery();
+		while(rs.next())
+		{
+			String bookid=rs.getString("bookid");
+			String issuedate=rs.getString("issuedate");
+			String email=rs.getString("email");
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			Date date = new Date();
+			String returndate=formatter.format(date);
+			Date dateBefore = formatter.parse(issuedate);
+		    Date dateAfter = formatter.parse(returndate);
+		    long totaldays = (dateAfter.getTime() - dateBefore.getTime())/(1000*60*60*24);
+		    String query1="update bookhistory set totaldays="+totaldays+" where email='"+email+"'";
+		    Statement st1=con.createStatement();
+		    int count=st1.executeUpdate(query1);
+		    String query2="update bookissue set totaldays="+totaldays+" where email='"+email+"'";
+		    Statement st2=con.createStatement();
+		    count=st2.executeUpdate(query2);
+		    st1.close();
+			st2.close();
+		}	
+    st.close();
+    con.close();
+  	}
+    catch(Exception e)
+	{
+        return;
+    }
+
+    %>  
 
 
 <style type="text/css">
