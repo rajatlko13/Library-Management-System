@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-	
+    
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.*"%>
@@ -10,7 +10,7 @@
 <%@page import="java.io.IOException"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
-	
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -197,8 +197,8 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Home</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="women.html"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
-						<li><a href="mission.html"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
+						<li><a href="About.html"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
 						<li><a href="Eresources.jsp"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
 						<li><a href="" data-toggle="modal" data-target="#contactModal"><i class="fa fa-angle-double-right"></i>Contact</a></li>
 						
@@ -216,10 +216,10 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>About Us</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
+						<li><a href="KnowLibrary.jsp"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
 						
 					</ul>
 				</div>
@@ -234,7 +234,6 @@
 						<li class="list-inline-item"><a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
-				</hr>
 			</div>	
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
@@ -386,6 +385,7 @@
 		while(rs.next())
 		{
 			String bookid=rs.getString("bookid");
+			String bookname=rs.getString("bookname");
 			String issuedate=rs.getString("issuedate");
 			String email=rs.getString("email");
 			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -402,7 +402,7 @@
 		    count=st2.executeUpdate(query2);
 		    st1.close();
 			st2.close();
-		}	
+		}
     st.close();
     con.close();
   	}
@@ -410,6 +410,7 @@
 	{
         return;
     }
+
 
     %>  
 
@@ -498,8 +499,4 @@ section .section-title {
 
 
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 8917de82d47cd4c3cccf4e307b73ecf029b09bcd
