@@ -93,8 +93,8 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Home</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="women.html"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
-						<li><a href="mission.html"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
+						<li><a href="About.jsp"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
 						<li><a href="Eresources.jsp"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
 						<li><a href="" data-toggle="modal" data-target="#contactModal"><i class="fa fa-angle-double-right"></i>Contact</a></li>
 						
@@ -112,10 +112,10 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>About Us</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
+						<li><a href="KnowLibrary.jsp"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
 						
 					</ul>
 				</div>
@@ -123,14 +123,13 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
 						<li class="list-inline-item"><a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
-				</hr>
 			</div>	
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
@@ -230,6 +229,10 @@
 				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 				  </div>
 				  <div class="form-group">
+				    <label>Username</label>
+				    <input type="name" name="studentusername" class="form-control" id="exampleInputUsername1" aria-describedby="nameHelp" placeholder="Enter name">
+				  </div>
+				  <div class="form-group">
 				    <label for="exampleInputPassword1">Password</label>
 				    <input type="password" name="studentpass" class="form-control" id="exampleInputPassword1" placeholder="Password">
 				  </div>
@@ -242,6 +245,7 @@
 		    </div>
 		  </div>
 		</div>
+
 		
 								<!-- Contact Modal -->
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

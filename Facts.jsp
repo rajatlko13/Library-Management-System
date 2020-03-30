@@ -68,6 +68,10 @@
   <p>Gateway to Discover, Connect and Learn</p>
 </div>
 
+<center class="container my-4" style="border-style: solid">
+<img alt="Loading" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR55UzQX-m0mwBN7BxBo_Lg4Jk7tQgO_50nJGHcaChrHNX7gcBI">
+</center>
+
 <div class="container my-5">
 <p>The University College Library functions as the General Library and Departmental Libraries. The General Library block has 
 three floors. Ground floor is the OERC (Online Education Research Centre). First floor is the Stack Room and Computer Area. 
@@ -81,9 +85,6 @@ continue to strive towards making the University library an exciting and indispe
 </p>
 </div>
 
-<center class="container mb-4" style="border-style: solid">
-<img alt="Loading" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR55UzQX-m0mwBN7BxBo_Lg4Jk7tQgO_50nJGHcaChrHNX7gcBI">
-</center>
 <div class="container row mx-auto" style="border-style: solid">
 <center class="col col-md-6">
 <img alt="Loading" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRU7stXcCRmFpFqrgVl8RhcvGihVI-wWMhZZgCIZXkh3Qtly4o2">
@@ -132,10 +133,10 @@ continue to strive towards making the University library an exciting and indispe
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
 						<li class="list-inline-item"><a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>

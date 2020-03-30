@@ -18,13 +18,13 @@
 
 <%
 response.setHeader("Cache-Control","no-cache,no-store,must revalidate");
-if(session.getAttribute("adminusername")==null)
+if(session.getAttribute("username")==null)
 {
 	response.sendRedirect("main.jsp");
 }
-%>	
+%>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark my-1">
   <a class="navbar-brand" href="#"><i class="fa fa-book" aria-hidden="true"></i> Central Institute Library <i class="fa fa-user" aria-hidden="true"></i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -36,33 +36,28 @@ if(session.getAttribute("adminusername")==null)
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item mr-3">
-        <a class="nav-link" href="AdminAbout.jsp">About</a>
+        <a class="nav-link" href="StudentAbout.jsp">About</a>
       </li>
        <li class="nav-item mr-3">
-        <a class="nav-link" href="AdminEresources.jsp">E-Resources</a>
-      </li>
-      <li class="nav-item dropdown mr-3">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Validate Books
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="BookList.jsp">Book List</a>    
-          <a class="dropdown-item" href="UserDetails.jsp">User Details</a>  
-          <a class="dropdown-item" href="BookDetails.jsp">Book Details</a> 
-          <a class="dropdown-item" href="BookIssueHistory.jsp">Book Issue History</a> 
-          <!-- <a class="dropdown-item" href="Mailmessage.jsp">Send Mail</a>   -->      
-        </div>
+        <a class="nav-link" href="StudentEresources.jsp">E-Resources</a>
       </li>
       <li class="nav-item dropdown mr-3">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage Books
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">       
-          <a class="dropdown-item" href="IssueBook.jsp">Issue Book</a>
-          <a class="dropdown-item" href="ReturnBook.jsp">Return Book</a>
-          <!-- <div class="dropdown-divider"></div> -->
-          <a class="dropdown-item" href="AddBook.jsp">Add Books</a>
-          <a class="dropdown-item" href="DeleteBook.jsp">Delete Books</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="StudentBookList.jsp">Book List</a>
+          <a class="dropdown-item" href="StudentIssueHistory.jsp">Issue History</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown mr-3">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Update Details
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="" data-toggle="modal" data-target="#changeemailModal">Change Email</a>
+          <a class="dropdown-item" href="" data-toggle="modal" data-target="#changecontactModal">Change Contact</a>
+          <a class="dropdown-item" href="" data-toggle="modal" data-target="#changepasswordModal">Change Password</a>
         </div>
       </li>
       <li class="nav-item mr-3 mt-1">
@@ -71,10 +66,11 @@ if(session.getAttribute("adminusername")==null)
         </form>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <h5 class="text-white text-center mr-5 my-auto">Welcome <%=session.getAttribute("username") %>!</h5>
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>
 
@@ -133,9 +129,13 @@ if(session.getAttribute("adminusername")==null)
 		<div class="col-lg-6">
 			<h3 class="text-dark" style="font-family: 'Josefin Sans', sans-serif;">Know the Facts</h3>
 			<hr>
-			<p style="font-family: Courgette, cursive;"><font size=3>The Central Institute Library is housed in a state-of-the-art new building, covering about 65000 sq.ft area and is located close to all academic blocks of the Institute. With attractive palatial interiors and a seating capacity of 750, the library includes, well-lit reading halls, stacks, display areas, e-library zones, audio-visual library and study carrels. There are a couple of air-conditioned reading halls.
+			<p style="font-family: Courgette, cursive;"><font size=3>The Central Institute Library is housed in a state-of-the-
+			art new building, covering about 65000 sq.ft area and is located close to all academic blocks of the Institute. With
+			 attractive palatial interiors and a seating capacity of 750, the library includes, well-lit reading halls, stacks, 
+			 display areas, e-library zones, audio-visual library and study carrels. There are a couple of air-conditioned 
+			 reading halls.
 			</font></p>
-			<button type="button" class="btn btn-primary"><a href="AdminAbout.jsp" class="text-white">View More...</a></button>
+			<button type="button" class="btn btn-primary"><a href="StudentAbout.jsp" class="text-white">View More...</a></button>
 		</div>
 	</div>
 
@@ -143,8 +143,12 @@ if(session.getAttribute("adminusername")==null)
 		<div class="col-lg-6">
 			<h3 class="text-dark">Collection Of Books</h3>
 			<hr>
-			<p style="font-family: Courgette, cursive;"><font size=3>The library is fully automated with a collection of over 2,45,000 books, manuscripts, a good collection of rare books with bound volumes of journals since 1920s. Library subscribes to over 209 printed National and International journals. About 39,106 full-text e-journals and as many as 36 databases have been made available on the campus network and can be accessed in the hostel rooms and staff residences.</font>
-			<button type="button" class="btn btn-primary mt-3" padding=2 ><a href="AdminAbout.jsp" class="text-white">View More...</a></button>
+			<p style="font-family: Courgette, cursive;"><font size=3>The library is fully automated with a collection of over 
+			2,45,000 books, manuscripts, a good collection of rare books with bound volumes of journals since 1920s. Library 
+			subscribes to over 209 printed National and International journals. About 39,106 full-text e-journals and as many as
+			 36 databases have been made available on the campus network and can be accessed in the hostel rooms and staff 
+			 residences.</font>
+			<button type="button" class="btn btn-primary mt-3" padding=2 ><a href="StudentAbout.jsp" class="text-white">View More...</a></button>
 		</div>
 		<div class="col-lg-6">
 			<img src="gallery.jpg" class="img-fluid">
@@ -157,24 +161,23 @@ if(session.getAttribute("adminusername")==null)
   <img src="https://i0.wp.com/api.gretchenrubin.com/wp-content/uploads/2017/08/gretchen-rubin-books-6.jpg?quality=90&resize=650%2C355" class="card-img-top pt-3" alt="first image" height="220">
   <div class="card-body">
     <h5 class="card-title">Latest Arrivals</h5>
-    <a href="AdminAbout.jsp#latest" class="btn btn-primary" target="_blank">Read more ...</a>
+    <a href="StudentAbout.jsp#latest" class="btn btn-primary" target="_blank">Read more ...</a>
   </div>
 </div>
 
 <div class="card col-lg-4 mx-auto bg-light border border-dark">
   <img src="https://www.foundationeducation.edu.au/sites/default/files/jumbotron/Course_COURSEHOME_79441093_1920x1080_0.jpg" class="card-img-top pt-3" alt="first image" height="220">
   <div class="card-body">
-    <h5 class="card-title">E-resources</h5>
-    
-    <a href="AdminEresources.jsp" class="btn btn-primary" target="_blank">Read more ...</a>
+    <h5 class="card-title">E-resources</h5>   
+    <a href="StudentEresources.jsp" class="btn btn-primary" target="_blank">Read more ...</a>
   </div>
 </div>
 
 <div class="card col-lg-4 mx-auto bg-light border border-dark">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVxg5WlmbchiZ3BJ-zTOeWg6vKXoiiyzQlNuPL5uiru_nBZY9jQQ" class="card-img-top pt-3" alt="first image" height="220">
   <div class="card-body">
-    <h5 class="card-title">Library Rules</h5>
-    <a href="AdminAbout.jsp#rules" class="btn btn-primary" target="_blank">Read more ...</a>
+    <h5 class="card-title">Library Rules</h5>   
+    <a href="StudentAbout.jsp#rules" class="btn btn-primary" target="_blank">Read more ...</a>
   </div>
 </div>
 </div>
@@ -185,11 +188,10 @@ if(session.getAttribute("adminusername")==null)
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Home</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="BookList.jsp"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
+						<li><a href="StudentBookList.jsp""><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
-						<li><a href="AdminEresources.jsp"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
-						<li><a href="" data-toggle="modal" data-target="#contactModal"><i class="fa fa-angle-double-right"></i>Contact</a></li>
-						
+						<li><a href="StudentEresources.jsp"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
+						<li><a href="" data-toggle="modal" data-target="#contactModal"><i class="fa fa-angle-double-right"></i>Contact</a></li>						
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
@@ -197,27 +199,28 @@ if(session.getAttribute("adminusername")==null)
 					<ul class="list-unstyled quick-links">
 						<li><a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-angle-double-right"></i>Log In</a></li>
 						<li><a href="" data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-angle-double-right"></i>Sign Up</a></li>
-						<li><a href="AdminFeedback.jsp"><i class="fa fa-angle-double-right"></i>Feedback</a></li>			
+						<li><a href="StudentFeedback.jsp"><i class="fa fa-angle-double-right"></i>Feedback</a></li>			
 					
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>About Us</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="AdminKnowLibrary.jsp"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
+						<li><a href="StudentKnowLibrary.jsp"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>					
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
+						
 					</ul>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus"><i class="fa fa-google-plus"></i></a></li>
 						<li class="list-inline-item"><a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
@@ -233,8 +236,100 @@ if(session.getAttribute("adminusername")==null)
 		</div>
 	</section>
 
+	<!-- Change Email Modal -->
+	<div class="modal fade" id="changeemailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Update Email</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <form action="Changeemail" method="post">
+		      <div class="modal-body" style="font-weight: bold">
+		        
+				  <div class="form-group">
+				    <label>Present Email</label>
+				    <input name="presentemail" type="text" class="form-control" placeholder="Enter here">
+				  </div>
+				  <div class="form-group">
+				    <label>New Email</label>
+				    <input name="newemail" type="text" class="form-control" placeholder="Enter here">
+				  </div>
+		      </div>
+		      <div class="modal-footer">
+		      	<button type="submit" class="btn btn-primary">Update</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		  	</form>
+		    </div>
+		  </div>
+		</div>
 		
-				<!-- Contact Modal -->
+		<!-- Change Contact Modal -->
+	<div class="modal fade" id="changecontactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Update Contact</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <form action="Changecontact" method="post">
+		      <div class="modal-body" style="font-weight: bold">
+		        
+				  <div class="form-group">
+				    <label>Present Contact No.</label>
+				    <input name="presentcontact" type="text" class="form-control" placeholder="Enter here">
+				  </div>
+				  <div class="form-group">
+				    <label>New Contact No.</label>
+				    <input name="newcontact" type="text" class="form-control" placeholder="Enter here">
+				  </div>
+		      </div>
+		      <div class="modal-footer">
+		      	<button type="submit" class="btn btn-primary">Update</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		  	</form>
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- Change Password Modal -->
+	<div class="modal fade" id="changepasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Update Password</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <form action="Changepassword" method="post">
+		      <div class="modal-body" style="font-weight: bold">
+		        
+				  <div class="form-group">
+				    <label>Present Password</label>
+				    <input name="presentpassword" type="password" class="form-control" placeholder="Enter here">
+				  </div>
+				  <div class="form-group">
+				    <label>New Password</label>
+				    <input name="newpassword" type="password" class="form-control" placeholder="Enter here">
+				  </div>
+		      </div>
+		      <div class="modal-footer">
+		      	<button type="submit" class="btn btn-primary">Update</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		  	</form>
+		    </div>
+		  </div>
+		</div>
+		
+						<!-- Contact Modal -->
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

@@ -79,7 +79,7 @@ The library has an extensive collection of books, periodicals, newspapers, these
 case studies, online databases and other multimedia resources. A group of faculty members and university librarians together 
 continue to strive towards making the University library an exciting and indispensable learning resource centre on the campus.  
 </p>
-<h3 class="pt-3">Library Rules</h3>
+<h3 class="pt-3" id="rules">Library Rules</h3>
 <hr align="left" width="15%">
 <ul>
 <li>The library remains open from 9.30 AM to 4.30 PM. on all working days.</li>
@@ -87,6 +87,19 @@ continue to strive towards making the University library an exciting and indispe
 <li>Books taken out by staff / students shall not be retained for more than a fortnight (14) days from the date of issue.</li>
 <li>Failure to return a book on the due date makes the staff / student liable to a fine of Rs.1 per day.</li>
 <li>Sub-Lending of books is not allowed.</li>
+</ul>
+
+<h3 class="pt-3" id="latest">Latest Arrivals</h3>
+<hr align="left" width="15%">
+<ul>
+<li>Gingerbread</li>
+<li>Underland</li>
+<li>The Tenth Muse</li>
+<li>Trick Mirror</li>
+<li>Ghost Wall</li>
+<li>Message from the Shadows</li>
+<li>The Golden Compass</li>
+<li>The Kite Runner</li>
 </ul>
 </div>
 
@@ -96,8 +109,8 @@ continue to strive towards making the University library an exciting and indispe
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Home</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="women.html"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
-						<li><a href="mission.html"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
+						<li><a href="About.jsp"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
 						<li><a href="Eresources.jsp"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
 						<li><a href="" data-toggle="modal" data-target="#contactModal"><i class="fa fa-angle-double-right"></i>Contact</a></li>
 						
@@ -115,10 +128,10 @@ continue to strive towards making the University library an exciting and indispe
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>About Us</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
+						<li><a href="KnowLibrary.jsp"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
 						
 					</ul>
 				</div>
@@ -126,14 +139,13 @@ continue to strive towards making the University library an exciting and indispe
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
 						<li class="list-inline-item"><a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
-				</hr>
 			</div>	
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
