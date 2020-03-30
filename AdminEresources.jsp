@@ -78,7 +78,7 @@ if(session.getAttribute("adminusername")==null)
 
 <div class="jumbotron text-center mb-0 mt-2">
   <h1 class="display-4" >E-Resources</h1>
-  <p class="lead">"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better.”- Sidney Sheldon
+  <p class="lead">"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better."- Sidney Sheldon
 </p>
   <hr>
   <p>Gateway to Discover, Connect and Learn</p>
@@ -111,10 +111,10 @@ if(session.getAttribute("adminusername")==null)
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Home</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="women.html"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
-						<li><a href="mission.html"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
-						<li><a href="crimes.html"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
-						<li><a href="policies.html"><i class="fa fa-angle-double-right"></i>Contact</a></li>
+						<li><a href="BookList.jsp"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
+						<li><a href="" data-toggle="modal" data-target="#contactModal"><i class="fa fa-angle-double-right"></i>Contact</a></li>
 						
 					</ul>
 				</div>
@@ -123,28 +123,27 @@ if(session.getAttribute("adminusername")==null)
 					<ul class="list-unstyled quick-links">
 						<li><a href="" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-angle-double-right"></i>Log In</a></li>
 						<li><a href="" data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-angle-double-right"></i>Sign Up</a></li>
-						<li><a href="Feedback.html"><i class="fa fa-angle-double-right"></i>Feedback</a></li>			
+						<li><a href="AdminFeedback.jsp"><i class="fa fa-angle-double-right"></i>Feedback</a></li>			
 					
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>About Us</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
-						<li><a href="https://en.wikipedia.org/wiki"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
-						
+						<li><a href="AdminKnowLibrary.jsp"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>					
 					</ul>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
 						<li class="list-inline-item"><a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
@@ -160,35 +159,27 @@ if(session.getAttribute("adminusername")==null)
 		</div>
 	</section>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">LOGIN</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body" style="font-weight: bold">
-		        <form>
-				  <div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputPassword1">Password</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-				  </div>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <button type="submit" class="btn btn-primary">Login</button>
-		      </div>
-		  	</form>
-		    </div>
-		  </div>
-		</div>
+				<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contacts</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span class="font-weight-bold">Call Us At:</span> +91 9862457328
+        <br>
+        <span class="font-weight-bold">Mail Us At:</span> CentralInstituteLibrary@gmail.com
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <style type="text/css">
 	section {

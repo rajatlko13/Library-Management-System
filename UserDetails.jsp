@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.sql.*"%>
+<%@page import="javax.servlet.http.*"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.ServletException"%>
+<%@page import="java.io.IOException"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,6 +24,7 @@
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+  	
 </head>
 <body>
 
@@ -22,9 +34,9 @@ if(session.getAttribute("adminusername")==null)
 {
 	response.sendRedirect("main.jsp");
 }
-%>	
+%>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-1">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-1">
   <a class="navbar-brand" href="#"><i class="fa fa-book" aria-hidden="true"></i> Central Institute Library <i class="fa fa-user" aria-hidden="true"></i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -32,8 +44,8 @@ if(session.getAttribute("adminusername")==null)
  
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active ml-5 mr-3">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item ml-5 mr-3">
+        <a class="nav-link" href="AdminPage.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item mr-3">
         <a class="nav-link" href="AdminAbout.jsp">About</a>
@@ -41,16 +53,15 @@ if(session.getAttribute("adminusername")==null)
        <li class="nav-item mr-3">
         <a class="nav-link" href="AdminEresources.jsp">E-Resources</a>
       </li>
-      <li class="nav-item dropdown mr-3">
+      <li class="nav-item active dropdown mr-3">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Validate Books
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="BookList.jsp">Book List</a>    
           <a class="dropdown-item" href="UserDetails.jsp">User Details</a>  
-          <a class="dropdown-item" href="BookDetails.jsp">Book Details</a> 
-          <a class="dropdown-item" href="BookIssueHistory.jsp">Book Issue History</a> 
-          <!-- <a class="dropdown-item" href="Mailmessage.jsp">Send Mail</a>   -->      
+          <a class="dropdown-item" href="BookDetails.jsp">Book Details</a>   
+          <a class="dropdown-item" href="BookIssueHistory.jsp">Book Issue History</a>       
         </div>
       </li>
       <li class="nav-item dropdown mr-3">
@@ -60,7 +71,6 @@ if(session.getAttribute("adminusername")==null)
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">       
           <a class="dropdown-item" href="IssueBook.jsp">Issue Book</a>
           <a class="dropdown-item" href="ReturnBook.jsp">Return Book</a>
-          <!-- <div class="dropdown-divider"></div> -->
           <a class="dropdown-item" href="AddBook.jsp">Add Books</a>
           <a class="dropdown-item" href="DeleteBook.jsp">Delete Books</a>
         </div>
@@ -78,108 +88,49 @@ if(session.getAttribute("adminusername")==null)
   </div>
 </nav>
 
-<div class="bd-example mt-0">
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active" ></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://s1.1zoom.me/big3/793/Library_Book_532388_1920x1080.jpg" alt="..." width="1400" height="500">
-        <div class="carousel-caption d-none d-md-block">      
-          <p><font size=5>"A library is like an island in the middle of a vast sea of ignorance, particularly if the library is very tall and the surrounding area has been flooded."</font></p>
-        </div>
-       </div>
-      <div class="carousel-item">
-        <img src="https://media.shakespeare.org.uk/images/Bookshop_2.2e16d0ba.fill-1920x1080-c75.jpg" alt="..." width="1400" height="500">
-       
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1529007196863-d07650a3f0ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="..." width="1400" height="500">
-        <div class="carousel-caption d-none d-md-block">
-         
-          <p><font size=5>"The very existence of libraries affords the best evidence that we may yet have hope for the future of man"</font></p>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
 
 <div class="jumbotron text-center mb-0 mt-2">
-  <h1 class="display-4" >CENTRAL INSTITUTE LIBRARY</h1>
-  <p class="lead">"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better.”- Sidney Sheldon
+  <h1 class="display-4" >User Details</h1>
+  <p class="lead">"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better."- Sidney Sheldon
 </p>
   <hr>
   <p>Gateway to Discover, Connect and Learn</p>
 </div>
 
-<section class="container">
-	<h1 class="text-center text-dark">About Us</h1>
-	<hr class="mx-auto w-25 text-dark">
-	<div class="row mt-4">
-		<div class="col-lg-6">
-			<img src="http://creativelibraryconcepts.com/wp-content/uploads/2017/06/standard-library-shelf-1024x683.jpg" class="img-fluid" width="800">
-		</div>
-		<div class="col-lg-6">
-			<h3 class="text-dark" style="font-family: 'Josefin Sans', sans-serif;">Know the Facts</h3>
-			<hr>
-			<p style="font-family: Courgette, cursive;"><font size=3>The Central Institute Library is housed in a state-of-the-art new building, covering about 65000 sq.ft area and is located close to all academic blocks of the Institute. With attractive palatial interiors and a seating capacity of 750, the library includes, well-lit reading halls, stacks, display areas, e-library zones, audio-visual library and study carrels. There are a couple of air-conditioned reading halls.
-			</font></p>
-			<button type="button" class="btn btn-primary"><a href="AdminAbout.jsp" class="text-white">View More...</a></button>
-		</div>
-	</div>
-
-	<div class="row mt-5">
-		<div class="col-lg-6">
-			<h3 class="text-dark">Collection Of Books</h3>
-			<hr>
-			<p style="font-family: Courgette, cursive;"><font size=3>The library is fully automated with a collection of over 2,45,000 books, manuscripts, a good collection of rare books with bound volumes of journals since 1920s. Library subscribes to over 209 printed National and International journals. About 39,106 full-text e-journals and as many as 36 databases have been made available on the campus network and can be accessed in the hostel rooms and staff residences.</font>
-			<button type="button" class="btn btn-primary mt-3" padding=2 ><a href="AdminAbout.jsp" class="text-white">View More...</a></button>
-		</div>
-		<div class="col-lg-6">
-			<img src="gallery.jpg" class="img-fluid">
-		</div>
-	</div>
-</section>
-
-<div class="row container mx-auto mt-2">
-<div class="card col-lg-4 mr-auto bg-light border border-dark">
-  <img src="https://i0.wp.com/api.gretchenrubin.com/wp-content/uploads/2017/08/gretchen-rubin-books-6.jpg?quality=90&resize=650%2C355" class="card-img-top pt-3" alt="first image" height="220">
-  <div class="card-body">
-    <h5 class="card-title">Latest Arrivals</h5>
-    <a href="AdminAbout.jsp#latest" class="btn btn-primary" target="_blank">Read more ...</a>
-  </div>
+<%
+	  try
+	  {
+  		String url="jdbc:mysql://localhost:3306/exampledatabase?useSSL=false";
+		String uname="root";
+		String pass="Rajat123";
+		String query="select * from studentsignup";
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con=DriverManager.getConnection(url,uname,pass);
+		PreparedStatement st=con.prepareStatement(query);
+		ResultSet rs=st.executeQuery();
+	%>
+	
+<div class="container text-center my-4 position-relative">
+<form action="FetchUserDetails.jsp" method="post">
+<span class="font-weight-bold mr-2">Email :</span> <select name="email" class="py-1 px-2 mr-3">
+<% while(rs.next()) { %>
+    <option><%=rs.getString("email") %></option>
+<% } %>
+ </select>
+<button class="btn btn-success">Search User</button>
+</form>
 </div>
-
-<div class="card col-lg-4 mx-auto bg-light border border-dark">
-  <img src="https://www.foundationeducation.edu.au/sites/default/files/jumbotron/Course_COURSEHOME_79441093_1920x1080_0.jpg" class="card-img-top pt-3" alt="first image" height="220">
-  <div class="card-body">
-    <h5 class="card-title">E-resources</h5>
+    <%
+    st.close();
+    con.close();
+  	}
+    catch(Exception e){
+        return;
+    }
+    %>
     
-    <a href="AdminEresources.jsp" class="btn btn-primary" target="_blank">Read more ...</a>
-  </div>
-</div>
 
-<div class="card col-lg-4 mx-auto bg-light border border-dark">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVxg5WlmbchiZ3BJ-zTOeWg6vKXoiiyzQlNuPL5uiru_nBZY9jQQ" class="card-img-top pt-3" alt="first image" height="220">
-  <div class="card-body">
-    <h5 class="card-title">Library Rules</h5>
-    <a href="AdminAbout.jsp#rules" class="btn btn-primary" target="_blank">Read more ...</a>
-  </div>
-</div>
-</div>
-
-<section id="footer" class="mt-5">
+<section id="footer" class="mt-4">
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">
 				<div class="col-xs-12 col-sm-4 col-md-4">
@@ -207,7 +158,8 @@ if(session.getAttribute("adminusername")==null)
 						<li><a href="AdminKnowLibrary.jsp"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>					
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
+						
 					</ul>
 				</div>
 			</div>
@@ -233,7 +185,6 @@ if(session.getAttribute("adminusername")==null)
 		</div>
 	</section>
 
-		
 				<!-- Contact Modal -->
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -257,6 +208,7 @@ if(session.getAttribute("adminusername")==null)
 </div>
 
 <style type="text/css">
+
 	section {
     padding: 60px 0;
 }

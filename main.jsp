@@ -111,7 +111,7 @@
 
 <div class="jumbotron text-center mb-0 mt-2">
   <h1 class="display-4" >CENTRAL INSTITUTE LIBRARY</h1>
-  <p class="lead">"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better.”- Sidney Sheldon
+  <p class="lead">"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better."- Sidney Sheldon
 </p>
   <hr>
   <p>Gateway to Discover, Connect and Learn</p>
@@ -151,7 +151,7 @@
   <img src="https://i0.wp.com/api.gretchenrubin.com/wp-content/uploads/2017/08/gretchen-rubin-books-6.jpg?quality=90&resize=650%2C355" class="card-img-top pt-3" alt="first image" height="220">
   <div class="card-body">
     <h5 class="card-title">Latest Arrivals</h5>
-    <a href="" class="btn btn-primary" target="_blank">Read more ...</a>
+    <a href="About.jsp#latest" class="btn btn-primary" target="_blank">Read more ...</a>
   </div>
 </div>
 
@@ -168,7 +168,7 @@
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVxg5WlmbchiZ3BJ-zTOeWg6vKXoiiyzQlNuPL5uiru_nBZY9jQQ" class="card-img-top pt-3" alt="first image" height="220">
   <div class="card-body">
     <h5 class="card-title">Library Rules</h5>   
-    <a href="About.jsp" class="btn btn-primary" target="_blank">Read more ...</a>
+    <a href="About.jsp#rules" class="btn btn-primary" target="_blank">Read more ...</a>
   </div>
 </div>
 </div>
@@ -197,7 +197,7 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Home</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="About.html"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
+						<li><a href="About.jsp"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
 						<li><a href="Eresources.jsp"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
 						<li><a href="" data-toggle="modal" data-target="#contactModal"><i class="fa fa-angle-double-right"></i>Contact</a></li>
@@ -227,10 +227,10 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/login"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
 						<li class="list-inline-item"><a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
@@ -394,7 +394,7 @@
 			Date dateBefore = formatter.parse(issuedate);
 		    Date dateAfter = formatter.parse(returndate);
 		    long totaldays = (dateAfter.getTime() - dateBefore.getTime())/(1000*60*60*24);
-		    String query1="update bookhistory set totaldays="+totaldays+" where email='"+email+"'";
+		    String query1="update bookhistory set totaldays="+totaldays+" where email='"+email+"' and returndate='---'";
 		    Statement st1=con.createStatement();
 		    int count=st1.executeUpdate(query1);
 		    String query2="update bookissue set totaldays="+totaldays+" where email='"+email+"'";

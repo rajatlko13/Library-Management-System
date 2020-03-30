@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.sql.*"%>
+<%@page import="javax.servlet.http.*"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.ServletException"%>
+<%@page import="java.io.IOException"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +16,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://use.fontawesome.com/ec453aebd2.js"></script>
 	<link href="fontawesome-free-5.9.0-web\css\all.css" rel="stylesheet">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -35,8 +43,8 @@ if(session.getAttribute("adminusername")==null)
       <li class="nav-item ml-5 mr-3">
         <a class="nav-link" href="AdminPage.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active mr-3">
-        <a class="nav-link" href="#">About</a>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="AdminAbout.jsp">About</a>
       </li>
        <li class="nav-item mr-3">
         <a class="nav-link" href="AdminEresources.jsp">E-Resources</a>
@@ -48,11 +56,10 @@ if(session.getAttribute("adminusername")==null)
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="BookList.jsp">Book List</a>    
           <a class="dropdown-item" href="UserDetails.jsp">User Details</a>  
-          <a class="dropdown-item" href="BookDetails.jsp">Book Details</a> 
-          <a class="dropdown-item" href="BookIssueHistory.jsp">Book Issue History</a>         
+          <a class="dropdown-item" href="BookDetails.jsp">Book Details</a>         
         </div>
       </li>
-      <li class="nav-item dropdown mr-3">
+      <li class="nav-item active dropdown mr-3">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage Books
         </a>
@@ -76,48 +83,17 @@ if(session.getAttribute("adminusername")==null)
   </div>
 </nav>
 
+
 <div class="jumbotron text-center mb-0 mt-2">
-  <h1 class="display-4" >About Us</h1>
-  <p class="lead">"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better.”- Sidney Sheldon
+  <h1 class="display-4" >Issue Book</h1>
+  <p class="lead">"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better."- Sidney Sheldon
 </p>
   <hr>
   <p>Gateway to Discover, Connect and Learn</p>
 </div>
 
-<div class="container my-5">
-<p>The University College Library functions as the General Library and Departmental Libraries. The General Library block has 
-three floors. Ground floor is the OERC (Online Education Research Centre). First floor is the Stack Room and Computer Area. 
-Second floor is the Reading Room and EDUSAT Centre. The College Library has a good collection of about 148000 books. The General 
-Library subscribes 40 Periodicals and 11 Newspapers. The Library has a special collection of books for NET Exams on all subjects.
-All the library facilities are open to all the members of the University community. The primary objective of the library is to 
-support the University in its endeavour to become a world-class University engaged in creating a research-based learning space. 
-The library has an extensive collection of books, periodicals, newspapers, theses/ dissertations, project reports, bound volumes,
-case studies, online databases and other multimedia resources. A group of faculty members and university librarians together 
-continue to strive towards making the University library an exciting and indispensable learning resource centre on the campus.  
-</p>
-<h3 class="pt-3" id="rules">Library Rules</h3>
-<hr align="left" width="15%">
-<ul>
-<li>The library remains open from 9.30 AM to 4.30 PM. on all working days.</li>
-<li>Students are admitted in the Library and Reading Room on production of Identity Cards.</li>
-<li>Books taken out by staff / students shall not be retained for more than a fortnight (14) days from the date of issue.</li>
-<li>Failure to return a book on the due date makes the staff / student liable to a fine of Rs.1 per day.</li>
-<li>Sub-Lending of books is not allowed.</li>
-</ul>
-
-<h3 class="pt-3" id="latest">Latest Arrivals</h3>
-<hr align="left" width="15%">
-<ul>
-<li>Gingerbread</li>
-<li>Underland</li>
-<li>The Tenth Muse</li>
-<li>Trick Mirror</li>
-<li>Ghost Wall</li>
-<li>Message from the Shadows</li>
-<li>The Golden Compass</li>
-<li>The Kite Runner</li>
-</ul>
-</div>
+<h3 class="mt-5 text-center">This user already has one book issued at present, so cannot issue any more now.</h3>
+  
 
 <section id="footer" class="mt-5">
 		<div class="container">
@@ -128,7 +104,7 @@ continue to strive towards making the University library an exciting and indispe
 						<li><a href="BookList.jsp"><i class="fa fa-angle-double-right"></i>Book Collection</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Institute Bulletin</a></li>
 						<li><a href="AdminEresources.jsp"><i class="fa fa-angle-double-right"></i>E-Resources</a></li>
-						<li><a href="" data-toggle="modal" data-target="#contactModal"><i class="fa fa-angle-double-right"></i>Contact</a></li>
+						<li><a href=""><i class="fa fa-angle-double-right"></i>Contact</a></li>
 						
 					</ul>
 				</div>
@@ -147,17 +123,18 @@ continue to strive towards making the University library an exciting and indispe
 						<li><a href="AdminKnowLibrary.jsp"><i class="fa fa-angle-double-right"></i>Know Your Library</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Brochure</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Library Staff</a></li>
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>					
+						<li><a href="#"><i class="fa fa-angle-double-right"></i>FAQs</a></li>
+						
 					</ul>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/login" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://aboutme.google.com/u/0/?referer=gplus" target="_blank"><i class="fab fa-google-plus"></i></a></li>
 						<li class="list-inline-item"><a href="https://www.google.com/intl/en-GB/gmail/about/" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
@@ -172,28 +149,6 @@ continue to strive towards making the University library an exciting and indispe
 			</div>	
 		</div>
 	</section>
-	
-				<!-- Contact Modal -->
-<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Contacts</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <span class="font-weight-bold">Call Us At:</span> +91 9862457328
-        <br>
-        <span class="font-weight-bold">Mail Us At:</span> CentralInstituteLibrary@gmail.com
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>	
 
 
 <style type="text/css">
